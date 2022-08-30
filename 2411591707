@@ -1,0 +1,1101 @@
+if game.GameId == 2411591707 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CloverMain/CloverMain/main/Password"))()
+    if table.find(Whitelist, game.Players.LocalPlayer.UserId) then
+        local color = "BloodTheme"
+        local autofarmTurn = 0
+        local autoabilitysTurn = 0
+        local autoquestTurn = 0
+        local autoattackTurn = 0
+        local autoformTurn = 0
+        local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/adabgsdyaevnxijkazgvnfjvncjbxazvknXJBBF/fsho4s7hf4slfshufsf/main/AHD"))()
+        local Window = Library.CreateLib("ScriptX | A Hero's Destiny", color)
+
+        local Home = Window:NewTab("Home")
+        local Main = Window:NewTab("AutoFarm")
+        local Quests = Window:NewTab("Quests")
+        local Teleports = Window:NewTab("Teleports")
+        local Misc = Window:NewTab("Misc")
+        local Settings = Window:NewTab("Settings")
+
+        local HomeSection = Home:NewSection("Home")
+
+        HomeSection:NewLabel("Welcome "..game.Players.LocalPlayer.Name)
+        HomeSection:NewLabel("Credits: ScriptXDeveloper#0248")
+        HomeSection:NewLabel("A Hero's Destiny Script")
+
+        local Autofarm = Main:NewSection("Autofarm")
+        local ToFarm = {
+
+        }
+        local function abiltiys(pos)
+            local Using = game.Players.LocalPlayer.Stats.Class.Value
+            Using = Using:gsub(" ", "")
+            for x = 1,4 do
+                local v1 = "UpdateMousePosition"
+                local v2 = pos
+                game:GetService("ReplicatedStorage").RemoteEvent:FireServer(v1, v2)
+                local v1 = Using.."Attack"..(x + 1)
+                local v2 = pos
+                local rem = game:GetService("ReplicatedStorage").RemoteEvent
+                rem:FireServer(v1, v2)
+            end
+        end
+
+        local function quests(SelectedNpc)
+            local questnum = 0
+            if SelectedNpc == "Criminal" then
+                questnum = 1
+            end
+            if SelectedNpc == "Paradiser" then
+                questnum = 2
+            end
+            if SelectedNpc == "Hammerhead" then
+                questnum = 3
+            end
+            if SelectedNpc == "Crablante" then
+                questnum = 4
+            end
+            if SelectedNpc == "Mosquito" then
+                questnum = 5
+            end
+            if SelectedNpc == "Abnormal" then
+                questnum = 6
+            end
+            if SelectedNpc == "Werewolf" then
+                questnum = 7
+            end
+            if SelectedNpc == "Seafolk" then
+                questnum = 8
+            end
+            if SelectedNpc == "SeaKing" then
+                questnum = 9
+            end
+            if SelectedNpc == "Sonic" then
+                questnum = 10
+            end
+            if SelectedNpc == "VaccineMan" then
+                questnum = 11
+            end
+            if SelectedNpc == "MosquitoGirl" then
+                questnum = 12
+            end
+            if SelectedNpc == "Phoenix" then
+                questnum = 13
+            end
+            if SelectedNpc == "Kabuto" then
+                questnum = 14
+            end
+            if SelectedNpc == "Gouketsu" then
+                questnum = 15
+            end
+            if SelectedNpc == "Boros" then
+                questnum = 16
+            end
+            if SelectedNpc == "Charanko" then
+                questnum = 17
+            end
+            if SelectedNpc == "Psykos" then
+                questnum = 18
+            end
+            if SelectedNpc == "Bahiri" then
+                questnum = 19
+            end
+            if SelectedNpc == "Claire" then
+                questnum = 20
+            end
+            if SelectedNpc == "Fendstrum" then
+                questnum = 21
+            end
+            if SelectedNpc == "Voidlet" then
+                questnum = 22
+            end
+            if SelectedNpc == "Void" then
+                questnum = 23
+            end
+            if SelectedNpc == "VoidCrystal" then
+                questnum = 24
+            end
+            if SelectedNpc == "HumanMonster" then
+                questnum = 25
+            end
+            if SelectedNpc == "GoldenS" then
+                questnum = 26
+            end
+            if SelectedNpc == "PlatinumS" then
+                questnum = 27
+            end
+            if SelectedNpc == "AwakenedHumanMonster" then
+                questnum = 28
+            end
+            if SelectedNpc == "Rock" then
+                questnum = 29
+            end
+            if SelectedNpc == "Auroris" then
+                questnum = 30
+            end
+            if SelectedNpc == "Kayla" then
+                questnum = 31
+            end
+            if SelectedNpc == "CosmicHumanMonster" then
+                questnum = 32
+            end
+            local store = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(0.5)
+            game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = store
+        end
+
+        local player = game.Players.LocalPlayer
+        local UnderPlayer = Instance.new("Part")
+        UnderPlayer.Parent = game.workspace
+        UnderPlayer.CFrame = CFrame.new(0,0,4000)
+        UnderPlayer.Size = Vector3.new(5, 0.01, 5)
+        UnderPlayer.Anchored = true
+        UnderPlayer.Material = Enum.Material.ForceField
+        local currentmobquest = "none"
+        Autofarm:NewToggle("AutoFarm", "Toggle autofarm!", function(autofarmtoggle)
+            if autofarmTurn == 0 then
+                autofarmTurn = 1
+                repeat
+                    wait(0.01)
+                    UnderPlayer.CFrame = CFrame.new(player.Character.HumanoidRootPart.CFrame.X, player.Character.HumanoidRootPart.CFrame.Y, player.Character.HumanoidRootPart.CFrame.Z) * CFrame.new(0, -3.0248,0)
+                    for i,Npc in pairs(game:GetService("Workspace").Spawns:GetChildren()) do
+                        game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(0.150586292, 143.59996, -0.193741798, -1, -2.27380017e-08, 2.75634229e-05, -2.27359411e-08, 1, 7.47385442e-08, -2.75634229e-05, 7.4737919e-08, -1)
+                        if table.find(ToFarm, Npc.Name) then
+                            if Npc:FindFirstChild(Npc.Name) == nil  then
+                                else
+                                Npc2 = Npc:FindFirstChild(Npc.Name)
+                                if Npc2:FindFirstChild("Humanoid") == nil then
+                                else
+                                    if Npc2:FindFirstChild("Humanoid").Health > 0 then
+                                        if autoquestTurn == 1 then
+                                            quests(Npc.Name)
+                                            wait(0.1)
+                                        end
+                                        repeat
+                                            wait()
+                                            if Npc2:FindFirstChild("Humanoid") == nil and Npc2:FindFirstChild("HumanoidRootPart") == nil then
+                                            else
+                                                if Npc2:FindFirstChild("Humanoid").Health > 0 then
+                                                    game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame =  Npc2:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, 0, 3)
+                                                    UnderPlayer.CFrame = CFrame.new(player.Character.HumanoidRootPart.CFrame.X, player.Character.HumanoidRootPart.CFrame.Y, player.Character.HumanoidRootPart.CFrame.Z) * CFrame.new(0, -3.0248,0)
+                                                    if autoabilitysTurn == 1 then
+                                                        local pos = Npc2:FindFirstChild("HumanoidRootPart").Position
+                                                        abiltiys(pos)
+                                                    end
+                                                    if autoattackTurn == 1 then
+                                                        game:GetService("ReplicatedStorage").RemoteEvent:FireServer("Punch","Left")
+                                                    end
+                                                end
+                                            end
+                                        until autofarmTurn == 0 or Npc2:FindFirstChild("Humanoid").Health == 0 or (not table.find(ToFarm, Npc.Name))
+                                    end
+                                end
+                            end
+                        end
+                    end
+                until autofarmTurn == 0
+                UnderPlayer.CFrame = CFrame.new(0,-1000, 400)
+                game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame =  CFrame.new(-57.0648, 725.974, -537.419)
+            else
+                autofarmTurn = 0
+                UnderPlayer.CFrame = CFrame.new(0,-1000, 400)
+                game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame =  CFrame.new(-57.0648, 725.974, -537.419)
+            end
+        end)
+
+        Autofarm:NewToggle("AutoAbilitys", "Toggle auto abilitys!", function(autofarmtoggle)
+            if autoabilitysTurn == 0 then
+                autoabilitysTurn = 1
+            else
+                autoabilitysTurn = 0
+            end
+        end)
+
+        Autofarm:NewToggle("AutoAttack", "Toggle auto attack!", function(autofarmtoggle)
+            if autoattackTurn == 0 then
+                autoattackTurn = 1
+            else
+                autoattackTurn = 0
+            end
+        end)
+
+        Autofarm:NewToggle("AutoQuest", "Toggle auto quest!", function(autofarmtoggle)
+            if autoquestTurn == 0 then
+                autoquestTurn = 1
+                if autofarmTurn == 1 then
+                    quests(currentmobquest)
+                end
+            else
+                autoquestTurn = 0
+            end
+        end)
+
+        Autofarm:NewToggle("AutoForm", "Toggle auto form!", function(autofarmtoggle)
+            if autoformTurn == 0 then
+                autoformTurn = 1
+                repeat 
+                    wait(0.01)
+                    if game.Players.LocalPlayer.Character:FindFirstChild("Form").value == "" then
+                        local Using = game.Players.LocalPlayer.Stats.Class.Value
+                        Using = Using:gsub(" ", "")
+                        local v1 = Using.."Attack6"
+                        local rem = game:GetService("ReplicatedStorage").RemoteEvent
+                        rem:FireServer(v1)
+                        wait(2)
+                    end
+                until autoformTurn == 0
+            else
+                autoformTurn = 0
+            end
+        end)
+
+        local SelectNpcs = Main:NewSection("SelectNpcs")
+        SelectNpcs:NewToggle("Criminal", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Criminal") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Criminal" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Criminal")
+            end
+        end)
+        SelectNpcs:NewToggle("Paradiser", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Paradiser") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Paradiser" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Paradiser")
+            end
+        end)
+        SelectNpcs:NewToggle("Hammerhead", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Hammerhead") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Hammerhead" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Hammerhead")
+            end
+        end)
+        SelectNpcs:NewToggle("Crablante", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Crablante") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Crablante" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Crablante")
+            end
+        end)
+        SelectNpcs:NewToggle("Mosquito", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Mosquito") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Mosquito" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Mosquito")
+            end
+        end)
+        SelectNpcs:NewToggle("Abnormal", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Abnormal") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Abnormal" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Abnormal")
+            end
+        end)
+        SelectNpcs:NewToggle("Werewolf", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Werewolf") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Werewolf" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Werewolf")
+            end
+        end)
+        SelectNpcs:NewToggle("Seafolk", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Seafolk") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Seafolk" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Seafolk")
+            end
+        end)
+        SelectNpcs:NewToggle("SeaKing", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "SeaKing") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "SeaKing" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "SeaKing")
+            end
+        end)
+        SelectNpcs:NewToggle("Sonic", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Sonic") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Sonic" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Sonic")
+            end
+        end)
+        SelectNpcs:NewToggle("VaccineMan", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "VaccineMan") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "VaccineMan" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "VaccineMan")
+            end
+        end)
+        SelectNpcs:NewToggle("MosquitoGirl", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "MosquitoGirl") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "MosquitoGirl" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "MosquitoGirl")
+            end
+        end)
+        SelectNpcs:NewToggle("Phoenix", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Phoenix") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Phoenix" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Phoenix")
+            end
+        end)
+        SelectNpcs:NewToggle("Kabuto", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Kabuto") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Kabuto" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Kabuto")
+            end
+        end)
+        SelectNpcs:NewToggle("Gouketsu", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Gouketsu") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Gouketsu" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Gouketsu")
+            end
+        end)
+        SelectNpcs:NewToggle("Boros", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Boros") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Boros" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Boros")
+            end
+        end)
+        SelectNpcs:NewToggle("Charanko", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Charanko") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Charanko" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Charanko")
+            end
+        end)
+        SelectNpcs:NewToggle("Psykos", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Psykos") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Psykos" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Psykos")
+            end
+        end)
+        SelectNpcs:NewToggle("Bahiri", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Bahiri") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Bahiri" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Bahiri")
+            end
+        end)
+        SelectNpcs:NewToggle("Claire", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Claire") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Claire" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Claire")
+            end
+        end)
+        SelectNpcs:NewToggle("Fendstrum", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Fendstrum") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Fendstrum" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Fendstrum")
+            end
+        end)
+        SelectNpcs:NewToggle("Voidlet", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Voidlet") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Voidlet" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Voidlet")
+            end
+        end)
+        SelectNpcs:NewToggle("Void", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Void") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Void" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Void")
+            end
+        end)
+        SelectNpcs:NewToggle("VoidCrystal", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "VoidCrystal") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "VoidCrystal" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "VoidCrystal")
+            end
+        end)
+        SelectNpcs:NewToggle("HumanMonster", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "HumanMonster") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "HumanMonster" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "HumanMonster")
+            end
+        end)
+        SelectNpcs:NewToggle("GoldenS", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "GoldenS") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "GoldenS" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "GoldenS")
+            end
+        end)
+        SelectNpcs:NewToggle("PlatinumS", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "PlatinumS") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "PlatinumS" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "PlatinumS")
+            end
+        end)
+        SelectNpcs:NewToggle("AwakenedHumanMonster", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "AwakenedHumanMonster") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "AwakenedHumanMonster" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "AwakenedHumanMonster")
+            end
+        end)
+        SelectNpcs:NewToggle("Rock", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Rock") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Rock" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Rock")
+            end
+        end)
+        SelectNpcs:NewToggle("Auroris", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Auroris") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Auroris" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Auroris")
+            end
+        end)
+        SelectNpcs:NewToggle("Kayla", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "Kayla") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "Kayla" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "Kayla")
+            end
+        end)
+        SelectNpcs:NewToggle("CosmicHumanMonster", "Toggle to farm this npc.", function(state)
+            if table.find(ToFarm, "CosmicHumanMonster") then
+                local RemoveNum = 0
+                for i,RemoveNpcName in pairs(ToFarm) do
+                    RemoveNum = RemoveNum + 1
+                    if RemoveNpcName == "CosmicHumanMonster" then
+                        table.remove(ToFarm, RemoveNum)
+                    end
+                end
+            else
+                table.insert(ToFarm, "CosmicHumanMonster")
+            end
+        end)
+
+
+        local InstaQuest = Quests:NewSection("Take Quests")
+        InstaQuest:NewButton("Criminal Quest", "Instant take quest.", function()
+            questnum = 1
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Paradiser Quest", "Instant take quest.", function()
+            questnum = 2
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Hammerhead Quest", "Instant take quest.", function()
+            questnum = 3
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Crablante Quest", "Instant take quest.", function()
+            questnum = 4
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Mosquito Quest", "Instant take quest.", function()
+            questnum = 5
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Abnormal Quest", "Instant take quest.", function()
+            questnum = 6
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Werewolf Quest", "Instant take quest.", function()
+            questnum = 7
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Seafolk Quest", "Instant take quest.", function()
+            questnum = 8
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("SeaKing Quest", "Instant take quest.", function()
+            questnum = 9
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Sonic Quest", "Instant take quest.", function()
+            questnum = 10
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("VaccineMan Quest", "Instant take quest.", function()
+            questnum = 11
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("MosquitoGirl Quest", "Instant take quest.", function()
+            questnum = 12
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Phoenix Quest", "Instant take quest.", function()
+            questnum = 13
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Kabuto Quest", "Instant take quest.", function()
+            questnum = 14
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Gouketsu Quest", "Instant take quest.", function()
+            questnum = 15
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Boros Quest", "Instant take quest.", function()
+            questnum = 16
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Charanko Quest", "Instant take quest.", function()
+            questnum = 17
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Psykos Quest", "Instant take quest.", function()
+            questnum = 18
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Bahiri Quest", "Instant take quest.", function()
+            questnum = 19
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Claire Quest", "Instant take quest.", function()
+            questnum = 20
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Fendstrum Quest", "Instant take quest.", function()
+            questnum = 21
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Voidlet Quest", "Instant take quest.", function()
+            questnum = 22
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Void Quest", "Instant take quest.", function()
+            questnum = 23
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("VoidCrystal Quest", "Instant take quest.", function()
+            questnum = 24
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("HumanMonster Quest", "Instant take quest.", function()
+            questnum = 25
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("GoldenS Quest", "Instant take quest.", function()
+            questnum = 26
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("PlatinumS Quest", "Instant take quest.", function()
+            questnum = 27
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("AwakenedHumanMonster Quest", "Instant take quest.", function()
+            questnum = 28
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Rock Quest", "Instant take quest.", function()
+            questnum = 29
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Auroris Quest", "Instant take quest.", function()
+            questnum = 30
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("Kayla Quest", "Instant take quest.", function()
+            questnum = 31
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        InstaQuest:NewButton("CosmicHumanMonster Quest", "Instant take quest.", function()
+            questnum = 32
+            local storeCFrame = game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0,-7,0)
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer("GetQuest",questnum)
+            wait(1)
+            game.Workspace.StaticHumanoids:FindFirstChild("Quest "..questnum).HumanoidRootPart.CFrame = storeCFrame
+        end)
+
+        local TeleportsSection = Teleports:NewSection("Shops") 
+        TeleportsSection:NewButton("Face shop", "Teleport to Face shop.", function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(127.030167, 724.473389, -461.394958)
+        end)
+        TeleportsSection:NewButton("Clothing shop", "Teleport to Clothing shop.", function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(136.624741, 724.473389, -572.820618)
+        end)
+        TeleportsSection:NewButton("Secret shop 1", "Teleport to Secret shop.", function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-546.698242, 723.174072, -586.333435)
+        end)
+        TeleportsSection:NewButton("Secret shop 2", "Teleport to Clothing shop.", function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1057.50427, 724.773804, -1195.32141)
+        end)
+        local TeleportsSectionBosses = Teleports:NewSection("Demon Teleports")
+        for i,DemonTeleports in pairs(game.Workspace.DemonTeleporters:GetChildren()) do
+            TeleportsSectionBosses:NewButton(DemonTeleports.Name, "Teleport to this location.", function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = DemonTeleports.CFrame
+            end)
+        end
+
+        local tospin = {
+
+        }
+        local AutoSpin = Misc:NewSection("AutoSpin")
+        local autospinTurn = 0
+        AutoSpin:NewToggle("Auto Spin", "Toggle auto spin.", function(state)
+            if autospinTurn == 0 then
+                autospinTurn = 1
+                repeat
+                    wait(0.01)
+                    if table.find(tospin, game.Players.LocalPlayer.Stats.Class.Value) then
+                        wait()
+                    else
+                        if #tospin == 0 then
+                            wait()
+                        else
+                            if not table.find(tospin, game.Players.LocalPlayer.Stats.Class.Value) then
+                                game:GetService("ReplicatedStorage").RemoteFunction:InvokeServer()
+                            end
+                        end
+                    end
+                until autospinTurn == 0
+            else
+                autospinTurn = 0
+            end
+        end)
+
+        local autobuyTurn = 0
+        AutoSpin:NewToggle("Auto Buy Spins", "Toggle auto buy spins.", function(state)
+            if autobuyTurn == 0 then
+                autobuyTurn = 1
+                repeat
+                    wait(0.5)
+                    game:GetService("ReplicatedStorage").RemoteEvent:FireServer("PurchaseSpinAll")
+                until autobuyTurn == 0
+            else
+                autobuyTurn = 0
+            end
+        end)
+
+        local Classes = {
+            "Cyborg",
+            "Esper",
+            "Alien",
+            "Superhuman",
+            "Watchdog",
+            "Ninja",
+            "Angel",
+            "Dark Esper",
+            "Metal Bat",
+            "Phoenix",
+            "Beerus",
+            "Demon",
+            "Arcane Knight",
+            "Broly",
+            "Thor",
+            "Ultrahuman",
+            "Hero Hunter",
+            "Gravity",
+            "Blast",
+            "Bing Bong",
+            "Cosmic"
+        }
+        local ClassSection = Misc:NewSection("Classes")
+        for i, Class in pairs(Classes) do
+            ClassSection:NewToggle(Class, "Toggle to spin for this class.", function(state)
+                if table.find(tospin, Class) then
+                    local RemoveNum = 0
+                    for i,RemoveClass in pairs(tospin) do
+                        RemoveNum = RemoveNum + 1
+                        if RemoveClass == Class then
+                            table.remove(tospin, RemoveNum)
+                        end
+                    end
+                else
+                    table.insert(tospin, Class)
+                    for i,v in pairs(tospin) do
+                        print(tospin)
+                    end
+                end      
+            end)
+        end
+
+        local SettingsSection = Settings:NewSection("Settings") 
+        SettingsSection:NewKeybind("Toggle UI Keybind", "Click this then press a button to set new keybind.", Enum.KeyCode.P, function()
+            Library:ToggleUI()
+        end)
+        local autokick = 0
+        SettingsSection:NewToggle("Autokick when someone is in the server", "Toggle this to kick yourself when someone is in.", function(state)
+            if autokick == 0 then
+                autokick = 1
+                repeat
+                    wait(0.01)
+                    if (#game.Players:GetChildren() > 1) and (autokick == 1) then
+                        game.Players.LocalPlayer:Kick("Someone is in the server")
+                    end
+                until autokick == 0
+            else
+                autokick = 0
+            end
+        end)
+        local antiafk = 0
+        SettingsSection:NewToggle("AntiAfk", "Toggle this to not get kick by afk.", function(state)
+            if antiafk == 0 then
+                antiafk = 1
+            else
+                antiafk = 0
+            end
+        end)
+
+        local vu = game:GetService("VirtualUser")
+        game:GetService("Players").LocalPlayer.Idled:connect(function()
+            if antiafk == 1 then
+                vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+                wait(1)
+                vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+            end
+        end)
+    end
+end
