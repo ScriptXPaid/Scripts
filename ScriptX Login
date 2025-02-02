@@ -110,7 +110,7 @@ local copyLink = function()
 	if success then
 		game:GetService("StarterGui"):SetCore("SendNotification",{
 			Title = "ScriptX",
-			Text = "Copied Key Website",
+			Text = "SetToClipboard Key Website",
 			Icon = ""
 		})
 		fSetClipboard(link);
@@ -120,7 +120,7 @@ end
 local copyDiscordLink = function()
 	game:GetService("StarterGui"):SetCore("SendNotification",{
 		Title = "ScriptX",
-		Text = "Copied Discord Server Link",
+		Text = "SetToClipboard Discord Server Link",
 		Icon = ""
 	})
 	fSetClipboard("https://discord.gg/wfBPYBnDxX");
@@ -309,7 +309,7 @@ local UICorner_8 = Instance.new("UICorner")
 local TextBox = Instance.new("TextBox")
 local UIGradient_6 = Instance.new("UIGradient")
 local UITextSizeConstraint_4 = Instance.new("UITextSizeConstraint")
-local Exit = Instance.new("TextLabel")
+local Exit = Instance.new("TextButton")
 local UIGradient_7 = Instance.new("UIGradient")
 local UITextSizeConstraint_5 = Instance.new("UITextSizeConstraint")
 
@@ -341,7 +341,7 @@ ScriptXName.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ScriptXName.BorderSizePixel = 0
 ScriptXName.Position = UDim2.new(0.498989969, 0, 0.159792393, 0)
 ScriptXName.Size = UDim2.new(0.457741469, 0, 0.239913404, 0)
-ScriptXName.Font = Enum.Font.Unknown
+ScriptXName.Font = Enum.Font.Kalam
 ScriptXName.Text = "ScriptX"
 ScriptXName.TextColor3 = Color3.fromRGB(255, 255, 255)
 ScriptXName.TextScaled = true
@@ -541,7 +541,7 @@ Exit.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Exit.BorderSizePixel = 0
 Exit.Position = UDim2.new(0.920100152, 0, 0.152540356, 0)
 Exit.Size = UDim2.new(0.126914561, 0, 0.224994048, 0)
-Exit.Font = Enum.Font.Unknown
+Exit.Font = Enum.Font.Kalam
 Exit.Text = "X"
 Exit.TextColor3 = Color3.fromRGB(255, 0, 0)
 Exit.TextScaled = true
@@ -569,7 +569,7 @@ Checkkey.MouseButton1Down:Connect(function()
 end)
 
 ImageButton.MouseButton1Down:Connect(function() 
-	copyLink()
+	copyDiscordLink()
 end)
 
 Getkey.MouseButton1Down:Connect(function() 
